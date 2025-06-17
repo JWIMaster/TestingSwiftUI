@@ -32,62 +32,68 @@ struct buttonView: View {
     let buttonStringArray: [String] = ["What does this button do?", "What about this one?", "Does this one do anything?", "New section?", "Is this app useless?", "Does this one do anything?"]
     var body: some View {
         VStack {
-            ZStack {
-                RoundedRectangle(cornerRadius: 12).strokeBorder(lineWidth: 10).foregroundStyle(panelColor).onTapGesture {
-                    
-                }
-                VStack {
-                    Button(buttonStringArray[0], action: {
-                        
-                    }).buttonStyle(.borderedProminent)
-                    
-                    Button(buttonStringArray[1], action: {
-                        
-                    }).buttonStyle(.borderedProminent)
-                    
-                    Button(buttonStringArray[2], action: {
-                        
-                    }).buttonStyle(.borderedProminent)
-                }
+            buttonsSection1
+            buttonsSection2
+        }.padding().shadow(radius: 12)
+    }
+    
+    var buttonsSection1: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12).strokeBorder(lineWidth: 10).foregroundStyle(panelColor).onTapGesture {
                 
+            }
+            VStack {
+                Button(buttonStringArray[0], action: {
+                    
+                }).buttonStyle(.borderedProminent)
+                
+                Button(buttonStringArray[1], action: {
+                    
+                }).buttonStyle(.borderedProminent)
+                
+                Button(buttonStringArray[2], action: {
+                    
+                }).buttonStyle(.borderedProminent)
             }
             
-            ZStack {
-                RoundedRectangle(cornerRadius: 12).foregroundStyle(panelColor)
-                VStack {
-                    Button(buttonStringArray[3], action: {
-                        
-                    }).buttonStyle(.borderedProminent)
+        }
+    }
+    
+    var buttonsSection2: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 12).foregroundStyle(panelColor)
+            VStack {
+                Button(buttonStringArray[3], action: {
                     
-                    Button(buttonStringArray[4], action: {
-                        
-                    }).buttonStyle(.borderedProminent)
+                }).buttonStyle(.borderedProminent)
+                
+                Button(buttonStringArray[4], action: {
                     
-                    Button(buttonStringArray[5], action: {
-                        
-                    }).buttonStyle(.borderedProminent)
-                    Text("Tap me and see what happens!").foregroundStyle(.white).padding().background(RoundedRectangle(cornerRadius: 12).foregroundStyle(.blue)).onTapGesture {
-                        switch panelColorController {
-                        case 0:
-                            panelColorController += 1
-                            panelColor = .pink
-                        case 1:
-                            panelColorController += 1
-                            panelColor = .green
-                        case 2:
-                            panelColorController += 1
-                            panelColor = .blue
-                        case 3:
-                            panelColorController = 0
-                            panelColor = .gray
-                        default:
-                            panelColorController = 0
-                        }
+                }).buttonStyle(.borderedProminent)
+                
+                Button(buttonStringArray[5], action: {
+                    
+                }).buttonStyle(.borderedProminent)
+                Text("Tap me and see what happens!").foregroundStyle(.white).padding().background(RoundedRectangle(cornerRadius: 12).foregroundStyle(.blue)).onTapGesture {
+                    switch panelColorController {
+                    case 0:
+                        panelColorController += 1
+                        panelColor = .pink
+                    case 1:
+                        panelColorController += 1
+                        panelColor = .green
+                    case 2:
+                        panelColorController += 1
+                        panelColor = .blue
+                    case 3:
+                        panelColorController = 0
+                        panelColor = .gray
+                    default:
+                        panelColorController = 0
                     }
                 }
-                
             }
-        }.padding().shadow(radius: 12)
+        }
     }
 }
 

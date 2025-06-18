@@ -135,19 +135,23 @@ struct addSections: View {
             VStack {
                 HStack {
                     Button("+", action: {
-                        switch numberOfSections {
-                        case 50:
-                            numberOfSections += 0
-                        default:
-                            numberOfSections += 1
+                        withAnimation {
+                            switch numberOfSections {
+                            case 50:
+                                numberOfSections += 0
+                            default:
+                                numberOfSections += 1
+                            }
                         }
                     }).buttonStyle(.borderedProminent)
                     Button("-", action: {
-                        switch numberOfSections {
-                        case 0:
-                            numberOfSections -= 0
-                        default:
-                            numberOfSections -= 1
+                        withAnimation {
+                            switch numberOfSections {
+                            case 0:
+                                numberOfSections -= 0
+                            default:
+                                numberOfSections -= 1
+                            }
                         }
                     }).buttonStyle(.borderedProminent)
                     Text("Count: \(numberOfSections)").padding(8).foregroundStyle(.white).background(RoundedRectangle(cornerRadius: 12).foregroundStyle(.blue))
@@ -157,8 +161,8 @@ struct addSections: View {
                 }
             }
             ForEach(0..<numberOfSections, id: \.self) { index in
-                childSection()
-            }
+                childSection().transition(.opacity)
+            }.animation(.bouncy, value: numberOfSections)
         }.padding()
     }
 }
@@ -170,5 +174,5 @@ struct childSection: View {
 }
 
 #Preview {
-    ContentView()
+    addSections()
 }
